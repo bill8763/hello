@@ -8,7 +8,7 @@
 	
     <property name="sourceCode" value="${sourceRoot}\src\"/>        
     <property name="webDir" value="${sourceRoot}\WebContent"/>    
-
+	<property name="lib" value="${webDir}\WEB-INF/lib"/>
 
 	<property name="classes" value="${outputRoot}\temp\${projectName}"/>
     <property name="destDir" value="${outputRoot}\output\${projectName}"/>
@@ -18,6 +18,13 @@
 	<mkdir dir="${destDir}"/>
 	<mkdir dir="${warDir}"/>
 	
+
+	
+    <path id="classpath">
+        <fileset dir="${lib}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
 
     <target name="delete classes" description="clean classes">
         <delete includeemptydirs="true">
