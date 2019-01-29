@@ -24,7 +24,7 @@
 <body>
 
 <div>
-	<h1>嗨~大家今天過的好嗎?</h1>
+	<h1>Hello</h1>
 </div>
 </body>
 <!-- end: BODY -->
