@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Auto Comipier" default="war">
+
+	<property name="projectName" value="hello"/>
+	
+    <property name="sourceRoot" value="."/>
+	<property name="outputRoot" value="..\war"/>
+	
+    <property name="sourceCode" value="${sourceRoot}\src\"/>        
+    <property name="webDir" value="${sourceRoot}\WebContent"/>    
+	<property name="lib" value="${webDir}\WEB-INF/lib"/>
+
+	<property name="classes" value="${outputRoot}\temp\${projectName}"/>
+    <property name="destDir" value="${outputRoot}\output\${projectName}"/>
+	<property name="warDir" value="${outputRoot}\war"/>
+
+	<mkdir dir="${classes}"/>
+	<mkdir dir="${destDir}"/>
+	<mkdir dir="${warDir}"/>
+	
+
+	
+    <path id="classpath">
+        <fileset dir="${lib}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="delete classes" description="clean classes">
+        <delete includeemptydirs="true">
+            <fileset dir="${classes}">
+                <include name="**/*"/>
+            </fileset>
+        </delete>
+    </target>
+
+    <target name="build" description="compile code" depends="delete classes">
+        <!--<echo message="${ant.project.name}: ${ant.file}"/>-->
+        <javac includeantruntime="on" encoding="UTF-8" debug="true" destdir="${classes}" source="1.8" target="1.8">
+            <src path="${sourceCode}"/>
+
+            <classpath refid="classpath"/>
+        </javac>
+    </target>
+
+    <target name="copy classes" description="copy classes to ap" depends="build">
+	<delete includeemptydirs="true">
+            <fileset dir="${destDir}">
+                <include name="**/*"/>
+            </fileset>
+        </delete>							   
+        <copy todir="${destDir}\WEB-INF\classes" overwrite="true">
+            <fileset dir="${classes}"/>
+        </copy>        
+    </target>
+
+    <target name="war" description="war application" depends="copy classes">
+        
+        <copy todir="${destDir}" overwrite="true">
+            <fileset dir="${webDir}"/>
+        </copy>  
+		
+		<jar destfile="${warDir}\${projectName}.war">
+            <zipfileset dir="${destDir}"/>
+        </jar>
+    </target>
+</project>
