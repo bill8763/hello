@@ -1,11 +1,6 @@
-<%@ page import="java.util.Date" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%
-    request.setCharacterEncoding("utf-8");
-
-
-
-
+	request.setCharacterEncoding("utf-8");
 %>
 <!DOCTYPE html>
 
@@ -16,16 +11,14 @@
 <!-- start: HEAD -->
 <head>
 
-
-
 </head>
 <!-- end: HEAD -->
 <!-- start: BODY -->
 <body>
 
-<div>
-	<h1>Hello</h1>
-</div>
+	<div>
+		<h1>HI!Hello!</h1>
+	</div>
 </body>
 <!-- end: BODY -->
 </html>
