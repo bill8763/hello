@@ -17,7 +17,7 @@
 <body>
 
 	<div>
-		<h1>HI!Hello!</h1>
+		<h1>嗨嗨</h1>
 	</div>
 </body>
 <!-- end: BODY -->
